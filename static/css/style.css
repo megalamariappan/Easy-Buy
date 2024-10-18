@@ -1,0 +1,163 @@
+/* index page */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    
+}
+.sections{
+  margin-top:80px;
+}
+.figure .index-img{
+  width: 250px;
+  height: 250px;
+}
+.row-1{
+    display: flex;
+    justify-content: center;
+}
+
+.log{
+    margin-top: 8rem;
+}
+.row-2{
+    display: flex;
+    justify-content: center;
+}
+.signup{
+    margin-top: 3rem; 
+}
+/* order page */
+.order-form {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  /*sign up page  */
+  .body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:lavender;
+  }
+  .product_body{
+    background:lavender;
+  } 
+
+  .signup-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .signup-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .signup-header h2 {
+    margin-bottom: 10px;
+  }
+
+  .form-control1 {
+    border-radius: 30px;
+    padding: 15px;
+  }
+
+ .signup-container .btn-signup {
+    background-color: #ff5e62;
+    color: white;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .signup-container .btn-signup:hover {
+    background-color: #ff9966;
+  }
+
+  .social-signup {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+
+  .social-signup a {
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 50px;
+    color: white;
+    width: 45%;
+    text-align: center;
+  }
+
+  .social-signup a.facebook {
+    background-color: #3b5998;
+  }
+
+  .social-signup a.google {
+    background-color: #dd4b39;
+  }
+
+  .login-link {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .login-link a {
+    text-decoration: none;
+    color: #ff5e62;
+  }
+  /*Log in page  */
+
+.log-in{
+    display: flex;
+    justify-content: center;
+}
+
+.log{
+    margin-top: 8rem;
+}
+/* card page */
+.cart-header {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  .product-details img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+  .price-details, .order-total {
+    background-color:lightcyan;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .btn-continue {
+    background-color: #8b0b86;
+    color: white;
+  }
+  .btn-continue:hover {
+    background-color: #6d0670;
+  }
+  .discount-msg {
+    background-color: #e6f4ea;
+    color: #2d8a39;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  .card-logo{
+    width: 60px;
+    height:60px;
+  }

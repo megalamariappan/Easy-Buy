@@ -1,0 +1,58 @@
+ {% extends 'layouts/main.html' %}
+ {% block title %}
+ Order Now | Easy Buy
+ {% endblock title %}
+ {% block content %}
+ <div class="product_body">
+  <div class="container">
+    <div class="sections">
+    <div class="order-form">
+      <h2 class="text-center">Product Order Form</h2>
+      <form action="" method="POST" autocomplete="off">
+        {% csrf_token %}
+        <p class="p text-center mt-3">{{get_product.product_name}}</p>
+        {% comment %} <div class="mb-3">
+          <label for="productname" class="form-label">Product Name</label>
+          <input type="text" class="form-control" id="productname" name="productname" required>
+        </div> {% endcomment %}
+        <!-- Quantity -->
+        <div class="mb-3">
+          <label for="quantity" class="form-label">Quantity</label>
+          <input type="number" class="form-control" id="quantity" name="quantity" min="1" value="1" required>
+        </div>
+
+        <!-- Customer Information -->
+        <div class="mb-3">
+          <label for="name" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="address" class="form-label">Shipping Address</label>
+          <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="mb-3">
+          <label for="payment-method" class="form-label">Payment Method</label>
+          <select class="form-select" id="payment-method" name="payment_method" required>
+            <option value="">Choose...</option>
+            {% for i in pay_method %}
+            <option value="{{i.id}}">{{i.payment_method}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary w-100">Submit Order</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock content %}

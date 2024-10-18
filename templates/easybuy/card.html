@@ -1,0 +1,84 @@
+{% extends 'layouts/main.html' %}
+{% block title %}
+Add to Cart | Easy Buy
+{% endblock title %}
+{% load static %}
+{% block content %}
+<!-- Cart Container -->
+ <div class="sections">
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row mb-4">
+    <div class="col-12 text-center">
+      <h1 class="text-primary">Easy Buy</h1>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="row">
+    <!-- Product Details Section -->
+    <div class="col-lg-8 col-md-6 mb-4">
+      <div class="card">
+      <div class="card product-details bg-info bg-opacity-10 p-4">
+        <h4 class="cart-header">Product Details</h4>
+        {% for i in get_cards %}
+        <div class="d-flex align-items-center justify-content-between mt-3">
+          <div class="d-flex">
+            <img src="{{i.product.product_image.url}}" class="card_img" alt="Mens_Shirt">
+            <div class="ms-3">
+              <h6>{{i.product.product_name}}</h6>
+              <p>₹{{i.product.discount_amount}} <small><del>₹{{i.product.original_price}}</del></small> <span class="text-danger">{{i.product.discount.offer_percent}}% Off</span></p>
+              <p>Qty: {{i.quantity}}</p>
+              <a href="{% url 'remove_card' i.id %}" class="text-danger">✕ REMOVE</a>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <h6 class="h6">No Products in the Card.</h6>
+        {% endfor %}
+      </div>
+    </div>
+    </div>
+
+    <!-- Price Summary Section -->
+    <div class="col-lg-4 col-md-6">
+      <div class="price-details mb-3">
+        <h4>Price Details ({{get_cards | length}} Item)</h4>
+        <div class="d-flex justify-content-between mt-2">
+          <p>Total Product Price</p>
+          <p>₹{{original}}</p>
+        </div>
+        <div class="d-flex justify-content-between">
+          <p>Total Discounts</p>
+          <p class="text-success">-₹{{one_disc}}</p>
+        </div>
+      </div>
+
+      <div class="order-total mb-3">
+        <h4>Order Total</h4>
+        <div class="d-flex justify-content-between">
+          <p>₹{{tot_original}}</p>
+        </div>
+        <div class="discount-msg mt-3">
+          Yay! Your total discount is ₹{{tot_disc}}
+        </div>
+      </div>
+
+      <button class="btn btn-continue btn-block w-100 py-2">Continue</button>
+      <p class="text-center mt-2 text-muted">Clicking on 'Continue' will not deduct any money</p>
+    </div>
+  </div>
+
+  <!-- Footer Assurance Section -->
+  <div class="row mt-4">
+    <div class="col-12 text-center">
+      <div class="p-3 bg-light rounded">
+        <img src="{% static 'images/log.png' %}"class="card-logo" alt="EasyBuy Safe">
+        <p>Your Safety, Our Priority</p>
+        <p>We ensure your package is safe at every point of contact.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock content %}

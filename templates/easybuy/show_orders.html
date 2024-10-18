@@ -1,0 +1,38 @@
+{% extends 'layouts/main.html' %}
+{% block title %}
+Easy Buy | products
+{% endblock title %}
+{% block content %}
+<div class="sections">
+<div class="container-fluid">
+    <div class="row justify-content-center my-5">
+        <div class="col-9">
+            <h3 class="h3"><b>Ordered User Id: {{get_user.user_id}}</b></h3>
+            <div class="card mt-3">
+                <div class="card-body bg-primary-subtle">
+                    {% for i in order %}
+                    <a href="#" class="text-decoration-none text-black">
+                   <div class="order_product row justify-content-center mt-4">
+                        <div class="col-2">
+                            <img src="{{ i.product_name.product_image.url }}" alt="Orders" class="w-75">
+                        </div>
+                        <div class="col-8">
+                            <h4 class="h6"><b>{{i.product_name.product_name}}</b></h4>
+                            <h6 class="h6">Qty: {{i.quantity}}</h6>
+                            <div class="d-flex">
+                                <h5 class="h6 text-secondary"><strike><b>Rs. {{i.product_name.original_price}}</b></strike></h5>
+                                <h5 class="h6"><b>Rs. {{i.product_name.discount_amount}}</b></h5>
+                            </div>
+                        </div>
+                   </div>
+                </a>
+                {% empty %}
+                <h6 class="h6">No ordered Products.</h6>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}

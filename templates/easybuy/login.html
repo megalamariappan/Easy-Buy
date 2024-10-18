@@ -1,0 +1,48 @@
+{% extends 'layouts/main.html' %}
+{% block title %}
+   Log In
+{% endblock title %}
+{% block content %}
+    <div class="condainer">
+        <div class="log">
+            <div class="row log-in">
+                <div class="col-5 bg-light p-3">
+                    <form action="" method="POST" autocomplete="off">
+                        {% csrf_token %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                          <div class="alert alert-danger">{{message}}</div>
+                        {% else %}
+                           <div class="alert alert-{{message.tags}}">{{message}}</div>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <h3 class="text-center text-dark">Log In<span class="ms-2"><i
+                                    class="bi bi-building-fill-lock"></i></span></h3>
+                        <div class="my-3">
+                            <!-- phone number -->
+                            <label for="User_name" class="form-label text-dark fw-bold">User Name</label>
+                            <input type="text" class="form-control" id="User_name" name="username" required>
+                        </div>
+                        <div>
+                            <!-- password -->
+                            <label for="password" class="form-label text-dark fw-bold">Password</label>
+                            <input type="password" id="password" class="form-control" name="password" required>
+                        </div>
+                        <div class="text-center my-3">
+                            <!-- log in button -->
+                            <button type="submit" class="btn btn-dark w-50 text-light" name="log_btn">Log In</button>
+                        </div>
+                        <div class="text-center my-3">
+                            <!-- next sign up -->
+                            <label class="form-label">Create New Account?<a href="{% url 'signup' %}"
+                                    class="text-decoration-none fw-bold">Sign up</a></label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% extends 'layouts/main.html' %}
+{% block title %}
+  Easy Buy
+{% endblock title %}
+{% block content %}
+<div class="sections">
+    <div class="container-fluid mt-3">
+        {% for collection,products in product_dict.items %}
+        <h2 class="text-secondary fw-semibold  fst-italic mb-3">
+            {% if collection|lower == 'mens_dress' %}MENS COLLETION
+            {% elif collection|lower == 'womens_dress' %}WOMENS COLLETION
+            {% elif collection|lower == 'mens_shoes' %}MENS SHOES COLLETION
+            {% elif collection|lower == 'womens_shoes' %}WOMENS SHOES COLLETION
+            {% endif %}
+        </h2>
+        <div class="row">
+            {% for dress in products %}
+            <div class="col-6 col-lg-3">
+                <figure class="figure">
+                    <div class="card">
+                        <a href="{% url 'productDetails' dress.id %}" class="text-decoration-none">
+                        <div class="card-body">
+                             <img src="{{ dress.product_image.url }}" class="card-img img-fluid index-img" name="men_1">
+                            <div class="card-text figure-caption my-2">
+                               {{dress.product_name}}
+                                <span class="fw-bold fs-3">₹{{dress.discount_amount}}</span><span
+                                    class="text-decoration-line-through">₹{{dress.original_price}}</span><span
+                                    class="badge bg-danger w-50">{{dress.discount.offer_percent}}% off</span>
+                            </div>
+                        </div>
+                    </a>
+                    </div>
+                </figure>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+        <!-- row-1 end -->
+        <!-- footer  section -->
+
+{% endblock content %}

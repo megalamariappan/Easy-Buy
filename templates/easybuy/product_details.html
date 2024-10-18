@@ -1,0 +1,57 @@
+{% extends 'layouts/main.html' %}
+{% block title %}
+   Easy Buy | Product Details
+{% endblock title %}
+{% block content %}
+<div class="sections">
+<div class="container-fluid">
+    <!-- <a href="{% url 'index' %}" class="p d-flex justify-content-end pe-5">Home</a> -->
+     {% if messages %}
+     {% for message in messages %}
+     <div class="alert alert-{{message.tags}}">{{message}}</div>
+     {% endfor %}
+     {% endif %}
+    <div class="row g-5 p-3">
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <img src="{{details.product_image.url}}" class="card-img img" name="men_1" height="520">
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div class="card  p-5 ">
+                <h5 class=" fst-italic">{{details.product_name}}</h5>
+                <span class="fw-bold fs-3">₹{{details.discount_amount}}</span>
+                <span class="text-decoration-line-through">₹{{details.original_price}}</span>
+                <span class="badge bg-danger w-25">{{details.discount.offer_percent}}% off</span>
+
+                <h3 class="mt-4">Product Details</h3>
+                <pre class="text-dark fw-bold">
+
+Name : {{details.product_name}}
+Pattern : {{details.pattern}}
+Net Quantity (N) : {{details.netquantity}}
+Sizes :  
+{{details.sizes}}
+
+Country of Origin : {{details.country_origin}}
+           </pre>
+                <div class="row">
+                    <div class="col-6">
+                        <form action="{% url 'add_to_cart' details.id %}" method="POST">
+                            {% csrf_token %}
+                        <button type="submit" class="btn btn-info"><span class="text-dark me-1"><i
+                                    class="bi bi-cart2"></i></span>Add Card</button>
+                        </form>
+                    </div>
+                    <div class="col-6">
+                        <a href="{% url 'order' details.id %}" class="btn btn-danger">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+{% endblock content %}
